@@ -1,12 +1,11 @@
 steps:
-  - command:
-      - "-f /workdir/locustfile.py -H https://gorest.co.in --headless -u 5 -r 1 -t 2m --csv=/workdir/results --only-summary"
-    env:
+  - env:
       GOREST_TOKEN: 70c201aa597dc70f04ef0a0520f248c0ec64223ed3c9c2963c6795e71e70c0e6
     plugins:
       - docker#v3.8.0:
           image: "locustio/locust"
           propageate-environment: true
+          command: ["-f /workdir/locustfile.py", "-H https://gorest.co.in", "--headless", "-u 5", "-r 1", "-t 2m", "--csv=/workdir/results", "--only-summary"]
           volumes:
             - "/var/run/docker.sock:/var/run/docker.sock"
     artifact_paths: "./results*.csv"
