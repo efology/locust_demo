@@ -8,4 +8,6 @@ steps:
           image: "locustio/locust"
           propageate-environment: true
           mount-checkout: true
+          volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
     artifact_paths: "./results*.csv"
