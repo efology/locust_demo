@@ -1,6 +1,6 @@
 steps:
   - command:
-      - "-f /workdir/locustfile.py -H https://gorest.co.in --headless -u 5 -r 1 -t 2m --csv=/workdir/results --only-summary"
+      - "-f /mnt/locust/locustfile.py -H https://gorest.co.in --headless -u 5 -r 1 -t 2m --csv=/mnt/locust/results --only-summary"
     env:
       GOREST_TOKEN: 70c201aa597dc70f04ef0a0520f248c0ec64223ed3c9c2963c6795e71e70c0e6
     plugins:
@@ -10,4 +10,5 @@ steps:
           mount-checkout: true
           volumes:
             - "/var/run/docker.sock:/var/run/docker.sock"
+            - "$PWD:/mnt/locust"
     artifact_paths: "./results*.csv"
