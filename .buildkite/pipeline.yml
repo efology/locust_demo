@@ -3,7 +3,7 @@ steps:
       - "pip install locust"
       - "locust -f /workdir/locustfile.py -u 5 -r 1 -t 2m -H https://gorest.co.in --headless --only-summary --csv=/workdir/results"
     env:
-      GOREST_TOKEN: "70c201aa597dc70f04ef0a0520f248c0ec64223ed3c9c2963c6795e71e70c0e6"
+      GOREST_TOKEN: "## YOUR GOREST TOKEN HERE ##"
     plugins:
       - docker#v3.8.0:
           image: "python:3"
