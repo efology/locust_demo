@@ -4,6 +4,7 @@ steps:
       - "pwd"
       - "ls -la"
       - "ls -la /tmp/locust"
+      - "ls -la /app"
       # - "locust -f /workdir/locustfile.py -u 5 -r 1 -t 2m -H https://gorest.co.in --headless --only-summary --csv=results"
     env:
       GOREST_TOKEN: 70c201aa597dc70f04ef0a0520f248c0ec64223ed3c9c2963c6795e71e70c0e6
@@ -12,6 +13,7 @@ steps:
           image: "python:3"
           propagate-environment: true
           mount-checkout: true
+          workdir: /app
           volumes:
             - "/var/run/docker.sock:/var/run/docker.sock"
             - "$PWD:/tmp/locust"
