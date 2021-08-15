@@ -1,8 +1,9 @@
 steps:
   - command:
-      - "pip install locust"
+      # - "pip install locust"
       - "pwd"
       - "ls -la"
+      - "ls -la /tmp/locust"
       # - "locust -f /workdir/locustfile.py -u 5 -r 1 -t 2m -H https://gorest.co.in --headless --only-summary --csv=results"
     env:
       GOREST_TOKEN: 70c201aa597dc70f04ef0a0520f248c0ec64223ed3c9c2963c6795e71e70c0e6
@@ -13,4 +14,5 @@ steps:
           mount-checkout: true
           volumes:
             - "/var/run/docker.sock:/var/run/docker.sock"
+            - "$PWD:/tmp/locust"
     artifact_paths: "./results*.csv"
